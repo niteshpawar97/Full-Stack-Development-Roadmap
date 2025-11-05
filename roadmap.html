@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0-100 Full Stack Development Roadmap | Harkirat Singh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h1 {
+            font-size: 3em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .description {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .phase {
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .phase-header:hover {
+            transform: translateY(-5px);
+        }
+
+        .phase-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-right: 20px;
+            opacity: 0.9;
+        }
+
+        .phase-title {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-icon {
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .topic {
+            padding: 12px 18px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic::before {
+            content: "✓";
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            color: #667eea;
+            transition: left 0.3s ease;
+        }
+
+        .topic:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .topic:hover::before {
+            left: 10px;
+        }
+
+        .projects {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+        }
+
+        .projects h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .project-item {
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(10px);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 12px;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #667eea;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 3px solid #667eea;
+            color: #666;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .phase-title {
+                font-size: 1.5em;
+            }
+
+            .topics {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-indicator" id="progressBar"></div>
+    
+    <div class="container">
+        <header>
+            <h1>🚀 Full Stack Development Roadmap</h1>
+            <div class="subtitle">0 to 100 with Harkirat Singh</div>
+            <p class="description">
+                Master the complete journey from basics to advanced MERN stack, DevOps, System Design, 
+                and build real-world projects. Transform from a beginner to a production-ready developer.
+            </p>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Phases</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Technologies</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Major Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Topics</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- PHASE 1: 0-1 -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-number">01</div>
+                <div class="phase-title">Foundation to Full Stack (0-1)</div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-dot" style="top: 0;"></div>
+                
+                <!-- Foundation Section -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-icon">💎</span>
+                        Foundation
+                    </h3>
+                    <div class="topics">
+                        <div class="topic">Foundation Javascript</div>
+                        <div class="topic">Async nature of JS</div>
+                        <div class="topic">Node.js and runtime</div>
+                        <div class="topic">Databases (NoSQL/SQL)</div>
+                        <div class="topic">MongoDB Deep Dive</div>
+                        <div class="topic">PostgreSQL Deep Dive</div>
+                        <div class="topic">TypeScript (Beginner to Advanced)</div>
+                    </div>
+                </div>
+
+                <!-- Backend Section -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-icon">⚙️</span>
+                        Backend Development
+                    </h3>
+                    <div class="topics">
+                        <div class="topic">Backend Communication Protocols</div>
+                        <div class="topic">Express (Basic to Advanced)</div>
+                        <div class="topic">ORMs</div>
+                        <div class="topic">Middlewares & Routes</div>
+                        <div class="topic">Status Codes & Global Catches</div>
+                        <div class="topic">Zod Validation</div>
+                        <div class="topic">MonoRepos & Turborepo</div>
+                        <div class="topic">Serverless Backends</div>
+                        <div class="topic">OpenAPI Specification</div>
+                        <div class="topic">Autogenerated Clients</div>
+                        <div class="topic">Authentication Libraries</div>
+                        <div class="topic">Scaling Node.js</div>
+                        <div class="topic">Performance Benchmarks</div>
+                        <div class="topic">Deploying NPM Packages</div>
+                    </div>
+                </div>
+
+                <!-- Frontend Section -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-icon">🎨</span>
+                        Frontend Development
+                    </h3>
+                    <div class="topics">
+                        <div class="topic">Reconcilers & Frontend Frameworks</div>
+                        <div class="topic">React (Beginner to Advanced)</div>
+                        <div class="topic">Internals of State</div>
+                        <div class="topic">Context API</div>
+                        <div class="topic">State Management (Recoil)</div>
+                        <div class="topic">CSS & Flexbox</div>
+                        <div class="topic">Tailwind CSS Deep Dive</div>
+                        <div class="topic">Next.js</div>
+                        <div class="topic">Custom Hooks</div>
+                        <div class="topic">NextAuth Authentication</div>
+                    </div>
+                </div>
+
+                <!-- DevOps Basics Section -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-icon">🐳</span>
+                        Basic DevOps
+                    </h3>
+                    <div class="topics">
+                        <div class="topic">Docker End to End</div>
+                        <div class="topic">Containerization</div>
+                        <div class="topic">Deploying to AWS Servers</div>
+                        <div class="topic">Modern Clouds (Fly/Remix)</div>
+                        <div class="topic">Nginx & Reverse Proxies</div>
+                    </div>
+                </div>
+
+                <!-- Projects Phase 1 -->
+                <div class="projects">
+                    <h3>🎯 Phase 1 Projects</h3>
+                    <div class="project-list">
+                        <div class="project-item">
+                            <strong>📚 GSoC Project</strong> - Setting up and issue solving
+                        </div>
+                        <div class="project-item">
+                            <strong>💰 Paytm/Wallet Clone</strong> - End to End Implementation
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE 2: 1-100 -->
+        <div class="phase">
+            <div class="phase-header">
+                <div class="phase-number">02</div>
+                <div class="phase-title">Advanced & System Design (1-100)</div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-dot" style="top: 0;"></div>
+                
+                <!-- Advanced Backend Section -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-icon">🚀</span>
+                        Advanced Backend & System Design
+                    </h3>
+                    <div class="topics">
+                        <div class="topic">Advanced Backend Communication</div>
+                        <div class="topic">Message Queues & PubSubs</div>
+                        <div class="topic">Proxies & Load Balancers</div>
+                        <div class="topic">Redis Deep Dive</div>
+                        <div class="topic">Kafka Deep Dive</div>
+                        <div class="topic">Design Patterns in JS</div>
+                        <div class="topic">Advanced DB Concepts</div>
+                        <div class="topic">Indexing & Normalization</div>
+                        <div class="topic">Rate Limiting</div>
+                        <div class="topic">Captchas & DDoS Protection</div>
+                        <div class="topic">Sharding & Replication</div>
+                        <div class="topic">Resiliency Patterns</div>
+                        <div class="topic">Horizontal & Vertical Scaling</div>
+                        <div class="topic">Polling & WebSockets</div>
+                        <div class="topic">gRPC</div>
+                        <div class="topic">Capacity Estimation</div>
+                        <div class="topic">CAP Theorem</div>
+                        <div class="topic">Testing Node.js Apps</div>
+                        <div class="topic">Real-time Communication</div>
+                        <div class="topic">WebRTC Basics</div>
+                    </div>
+                </div>
+
+                <!-- Advanced DevOps Section -->
+                <div class="section">
+                    <h3 class="section-title">
+                        <span class="section-icon">☸️</span>
+                        Advanced DevOps & Cloud
+                    </h3>
+                    <div class="topics">
+                        <div class="topic">Container Orchestration</div>
+                        <div class="topic">Docker Swarm</div>
+                        <div class="topic">Kubernetes</div>
+                        <div class="topic">CI/CD Pipelines</div>
+                        <div class="topic">Monitoring Systems</div>
+                        <div class="topic">Prometheus</div>
+                        <div class="topic">Grafana</div>
+                        <div class="topic">New Relic</div>
+                        <div class="topic">Serverless Deep Dive</div>
+                        <div class="topic">AWS EC2</div>
+                        <div class="topic">AWS S3</div>
+                        <div class="topic">CDNs</div>
+                        <div class="topic">Load Balancers</div>
+                        <div class="topic">AWS EKS</div>
+                    </div>
+                </div>
+
+                <!-- Projects Phase 2 -->
+                <div class="projects">
+                    <h3>🎯 Phase 2 Projects</h3>
+                    <div class="project-list">
+                        <div class="project-item">
+                            <strong>📈 Zerodha Clone</strong> - Complete Trading Platform
+                        </div>
+                        <div class="project-item">
+                            <strong>⚡ Zapier Clone</strong> - Automation Platform End to End
+                        </div>
+                        <div class="project-item">
+                            <strong>🌟 Real-world Open Source</strong> - Contributing to Production Projects
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <h2>🎓 Complete Your Journey from Zero to Hero</h2>
+            <p style="margin-top: 15px; font-size: 1.1em;">
+                This comprehensive roadmap covers everything you need to become a production-ready full-stack developer.
+                <br>
+                <strong>Master the stack. Build real projects. Get hired.</strong>
+            </p>
+            <p style="margin-top: 20px; color: #999;">
+                Created with 💜 for aspiring developers
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Progress bar on scroll
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section, .projects').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Add click tracking for topics
+        document.querySelectorAll('.topic').forEach(topic => {
+            topic.addEventListener('click', function() {
+                this.style.background = 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)';
+                setTimeout(() => {
+                    this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
